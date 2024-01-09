@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int rec(vector<int>&nums ,int target ,int index,int size,vector<vector<int>>&dp){
+        if(dp[index][target+2000]!=-1){
+            return dp[index][target+2000];
+        }
+        if(index==size && target==0){
+            return  dp[index][target+2000]=1;
+        }
+        if(index==size){
+            return  dp[index][target+2000]=0;
+        }
+        int way=0;
+        way+=rec(nums,target-nums[index],index+1,size,dp);
+        way+=rec(nums,target+nums[index],index+1,size,dp);
+        return dp[index][target+2000]=way;
+
+    }
+    int findTargetSumWays(vector<int>& nums, int target) {
+        int n=nums.size();
+        vector<vector<int>>dp(n+1,vector<int>(4002,-1));
+        int ways=rec(nums,target,0,n,dp);
+        return ways; 
+    }
+};
