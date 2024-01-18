@@ -16,6 +16,7 @@ public:
 }; 
 
 // iterative 2 stack 
+// Another approach would  be  using vector ans instead of stack and reverse ans 
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
